@@ -82,7 +82,7 @@ CK_CC_INLINE static void
 ck_bytelock_write_lock(struct ck_bytelock *bytelock, unsigned int slot)
 {
 	unsigned int i;
-	uint64_t *readers = (void *)bytelock->readers;
+	uint64_t *readers = (uint64_t *)bytelock->readers;
 
 	/* Announce upcoming writer acquisition. */
 	while (ck_pr_cas_uint(&bytelock->owner, 0, slot) == false)
